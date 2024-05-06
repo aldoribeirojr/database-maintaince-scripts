@@ -121,7 +121,7 @@ SQL> select payload from V$DIAG_SESS_SQL_TRACE_RECORDS where trace_filename = 'O
 tfactl diagcollect -srdc <srdc_type>
 tfactl diagcollect -srdc ORA-00600
 
---
+-- sanitization
 tfactl orachk -preupgrade -sanitize
 -- reverse map the sanitization
 tfactl orachk -rrmap entity_sanitized_name
@@ -146,7 +146,6 @@ tfactl managelogs -purge -older 30d -dryrun
 -- -show usage # show disk space usage per diagnostic directory for both
 -- -database dbname
 -- dryrun # Use with -purge to estimate how many files will be affected and how much disk space will freed by a potencial purge command
-
 
 -- Monitor multiple logs
 tfactl tail
