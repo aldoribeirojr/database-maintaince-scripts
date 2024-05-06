@@ -118,40 +118,40 @@ SQL> select payload from V$DIAG_SESS_SQL_TRACE_RECORDS where trace_filename = 'O
 
 -- Self analysis in MOS using TFA collections
 -- ORA-00600 - Troubleshooting Tool
-tfactl diagcollect -srdc <srdc_type>
-tfactl diagcollect -srdc ORA-00600
+shell> tfactl diagcollect -srdc <srdc_type>
+shell> tfactl diagcollect -srdc ORA-00600
 
 -- sanitization
-tfactl orachk -preupgrade -sanitize
+shell> tfactl orachk -preupgrade -sanitize
 -- reverse map the sanitization
-tfactl orachk -rrmap entity_sanitized_name
+shell> tfactl orachk -rrmap entity_sanitized_name
 
 -- Find if anything has changed
-tfactl changes
+shell> tfactl changes
 
 -- Detect and collect using SRDC
-tfactl diagcollect -srdc dbperf [-sr <sr_number>]
-tfactl diagcollect -srdc ORA-00600
+shell> tfactl diagcollect -srdc dbperf [-sr <sr_number>]
+shell> tfactl diagcollect -srdc ORA-00600
 
 -- Automatic Database Log Purge
-tfactl set manageLogsAutoPurge=ON -- TFA can automatically purge database logs
-tfactl set manageLogsAutoPurgePolicyAge=<n><d|h>
-tfactl set manageLogsAutoPurgeInterval=minutes
+shell> tfactl set manageLogsAutoPurge=ON -- TFA can automatically purge database logs
+shell> tfactl set manageLogsAutoPurgePolicyAge=<n><d|h>
+shell> tfactl set manageLogsAutoPurgeInterval=minutes
 
 -- Manual Database Log Purge
-tfactl managelogs <options>
+shell> tfactl managelogs <options>
 -- examples
-tfactl managelogs -show variation -older 30d 
-tfactl managelogs -purge -older 30d -dryrun
+shell> tfactl managelogs -show variation -older 30d 
+shell> tfactl managelogs -purge -older 30d -dryrun
 -- -show usage # show disk space usage per diagnostic directory for both
 -- -database dbname
 -- dryrun # Use with -purge to estimate how many files will be affected and how much disk space will freed by a potencial purge command
 
 -- Monitor multiple logs
-tfactl tail
+shell> tfactl tail
 
 -- Monitor Database Performance
-tfactl run oratop -database ogg19c
+shell> tfactl run oratop -database ogg19c
 
 -- Analyze OS Metrics
-tfactl run oswbb
+shell> tfactl run oswbb
