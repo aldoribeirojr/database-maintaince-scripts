@@ -150,3 +150,9 @@ tfactl managelogs -purge -older 30d -dryrun
 
 -- Monitor multiple logs
 tfactl tail
+
+-- Monitor Database Performance
+tfactl run oratop -database ogg19c
+
+-- Analyze OS Metrics
+tfactl run oswbb
