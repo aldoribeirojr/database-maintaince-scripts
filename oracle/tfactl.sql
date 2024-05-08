@@ -1,7 +1,7 @@
 -- Analyze logs and look for errors
-shell> tfactl analyze -sinze 1d -- show summary of events from alert logs, system messages in last 5 hours
+shell> tfactl analyze -since 1d -- show summary of events from alert logs, system messages in last 5 hours
 shell> tfactl analyze -comp os -since 1d -- show sumary of events from system messages in last 1 day
-shell> tfactl analyze - search "ORA-" -since 2d -- search string ORA- in alert and system logs in past 2 days
+shell> tfactl analyze -search "ORA-" -since 2d -- search string ORA- in alert and system logs in past 2 days
 shell> tfactl analyze -search "/Starting/c" -since 2d -- search case sensitive string "Starting" in past 2 days
 shell> tfactl analyze -comp os -for "Oct/01/2020 11" -search "." -- show all system logs messages at time Oct/01/2020
 shell> tfactl analyze -comp osw -since 6h -- show OSWatcher Top sumary in last 6 hours
